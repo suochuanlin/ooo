@@ -7,8 +7,19 @@ import java.util.Map;
 
 public class BinaryTreeAlgorithm {
 
+    public static void main(String[] args) {
+//        int[] sourceArray = new int[]{6, 7, 9, 8, 4, 3};
+        int[] preorder = new int[]{3,9,20,15,7};
+        int[] inorder =  new int[]{9,3,15,20,7};
+//        System.out.println("createBinarySearchTree" + JSONObject.toJSONString(createBinarySearchTree(sourceArray)));
+//        System.out.println("insertArr" + JSONObject.toJSONString(insertArr(sourceArray)));
+//        System.out.println("insertRecurision" + JSONObject.toJSONString(insertRecurision(sourceArray)));
+        System.out.println("reCreateBinaryTree " + JSONObject.toJSONString(reCreateBinaryTree(preorder,inorder)));
+    }
 
-
+    /**
+     *  1、根据数组 创建二叉搜索树
+     */
     public static TreeNode insertArr(int[] sourceArray) {
         if (sourceArray == null || sourceArray.length == 0) {
             return null;
@@ -21,7 +32,7 @@ public class BinaryTreeAlgorithm {
         return root;
     }
 
-    //1、根据数组 创建二叉搜索树
+
     public static TreeNode createBinarySearchTree(int[] sourceArray) {
         if (sourceArray == null || sourceArray.length == 0) {
             return null;
@@ -93,6 +104,11 @@ public class BinaryTreeAlgorithm {
         if (value < root.value) root.left = insertRecurision(root.left,value);
         return root;
     }
+
+    /**
+     * 2、根据前中序 重建二叉树
+     * @param args
+     */
 /*
 
     二叉树的前序遍历顺序是：根节点、左子树、右子树，每个子树的遍历顺序同样满足前序遍历顺序。
@@ -119,18 +135,7 @@ public class BinaryTreeAlgorithm {
      inOrder = {9,3,15,20,7}
  */
 
-
-    public static void main(String[] args) {
-        int[] sourceArray = new int[]{6, 7, 9, 8, 4, 3};
-        int[] preorder = new int[]{3,9,20,15,7};
-        int[] inorder =  new int[]{9,3,15,20,7};
-//        System.out.println("createBinarySearchTree" + JSONObject.toJSONString(createBinarySearchTree(sourceArray)));
-//        System.out.println("insertArr" + JSONObject.toJSONString(insertArr(sourceArray)));
-//        System.out.println("insertRecurision" + JSONObject.toJSONString(insertRecurision(sourceArray)));
-        System.out.println("reCreateBinaryTree " + JSONObject.toJSONString(reCreateBinaryTree(preorder,inorder)));
-    }
-
-    public static Map<Integer, Integer> inIndexMap = new HashMap();
+    public static Map<Integer, Integer> inIndexMap = new HashMap(16);
 
 
     public static TreeNode reCreateBinaryTree(int[] preOrderArray, int[] inOrderArray) {
@@ -144,32 +149,89 @@ public class BinaryTreeAlgorithm {
                 inOrderArray, 0, length - 1, inIndexMap);
     }
 
-    private static TreeNode createTree(int[] preOrderArray, int preOrderStartIndex, int preOrderEndIndex,
-                                       int[] inOrderArray, int inOrderStartIndex, int inOrderEndIndex,
+    private static TreeNode createTree(int[] preOrderArray, int preStartIndex, int preOrderEndIndex,
+                                       int[] inOrderArray, int inStartIndex, int inOrderEndIndex,
                                        Map<Integer, Integer> inIndexMap) {
 
-        if (preOrderStartIndex > preOrderEndIndex) {
+        if (preStartIndex > preOrderEndIndex) {
             return null; //1、说明子节点为null
         }
-        Integer rootIndex = inIndexMap.get(preOrderArray[preOrderStartIndex]); //中序数组中root点index
-        TreeNode root = new TreeNode(preOrderArray[preOrderStartIndex]); //前序第一个值为根节点
-        if (preOrderStartIndex == preOrderEndIndex) {
+        Integer rootIndex = inIndexMap.get(preOrderArray[preStartIndex]); //中序数组中root点index
+        int rootVal = preOrderArray[preStartIndex];
+        TreeNode root = new TreeNode(rootVal); //前序第一个值为根节点
+        if (preStartIndex == preOrderEndIndex) {
             return root; //2、说明只有一个节点
         } else {
-            //3、重建左右子树
-            int leftNodesNum = rootIndex - inOrderStartIndex, rightNodesNum = inOrderEndIndex - rootIndex; //根左右序列长度
-            root.left = createTree(preOrderArray, preOrderStartIndex + 1,preOrderStartIndex + leftNodesNum,
-                    inOrderArray, inOrderStartIndex, inOrderStartIndex + leftNodesNum,
+            //3、重建左子树
+            int leftNodesNum = rootIndex - inStartIndex, rightNodesNum = inOrderEndIndex - rootIndex; //根左右序列长度（节点个数）
+            root.left = createTree(preOrderArray, preStartIndex + 1, preStartIndex + leftNodesNum,
+                    inOrderArray, inStartIndex, inStartIndex + leftNodesNum + 1,
                     inIndexMap);
+            //4、重建右子树
             root.right = createTree(preOrderArray, rootIndex + 1, rootIndex + rightNodesNum,
-                    inOrderArray,inOrderStartIndex, inOrderStartIndex + rightNodesNum,
+                    inOrderArray, inStartIndex, inStartIndex + rightNodesNum + 1,
                     inIndexMap);
             return root;
         }
-
-
     }
 
+
+    public TreeNode buildTree(int[] preorder, int preorderStart, int preorderEnd, int[] inorder, int inorderStart, int inorderEnd, Map<Integer, Integer> indexMap) {
+        if (preorderStart > preorderEnd) {
+            return null;
+        }
+        int rootVal = preorder[preorderStart];
+        TreeNode root = new TreeNode(rootVal);
+        if (preorderStart == preorderEnd) {
+            return root;
+        } else {
+            int rootIndex = indexMap.get(rootVal);
+            int leftNodes = rootIndex - inorderStart, rightNodes = inorderEnd - rootIndex;
+            TreeNode leftSubtree = buildTree(preorder, preorderStart + 1, preorderStart + leftNodes, inorder, inorderStart, rootIndex - 1, indexMap);
+            TreeNode rightSubtree = buildTree(preorder, preorderEnd - rightNodes + 1, preorderEnd, inorder, rootIndex + 1, inorderEnd, indexMap);
+            root.left = leftSubtree;
+            root.right = rightSubtree;
+            return root;
+        }
+    }
+
+//    public TreeNode reBuildTree(int[] preArray, int s1, int e1, int[] inArray, int s2, int e2) {
+//        int rootVal = preArray[s1];
+//    }
+
+
+
+    /**
+     * leetcode 226题、剑指offer 27题
+     * 翻转一棵二叉树
+     * 输入：
+     *
+     *      4
+     *    /   \
+     *   2     7
+     *  / \   / \
+     * 1   3 6   9
+     * 输出：
+     *
+     *      4
+     *    /   \
+     *   7     2
+     *  / \   / \
+     * 9   6 3   1
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/invert-binary-tree
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+    //根节点的 非空子节点进行交换，一直递归到最后null节点
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null) return null;
+        TreeNode rightNode = invertTree(root.right);
+        TreeNode leftNode = invertTree(root.left);
+        root.left= rightNode;
+        root.right = leftNode;
+        return root;
+    }
 
 
 }
