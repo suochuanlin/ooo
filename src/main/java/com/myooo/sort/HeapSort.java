@@ -17,29 +17,29 @@ import java.util.Arrays;
 public class HeapSort {
 
     public static void main(String[] args) {
-        int[] arr = new int[]{2, 5, 3, 1, 10, 7};
-        heapSort(arr);
+        int[] nums = new int[]{2, 5, 3, 1, 10, 7};
+        heapSort(nums);
     }
 
-    public static void heapSort(int[] arr) {
+    public static void heapSort(int[] nums) {
         //1、原地建堆 heapify
-        buildHeap(arr);
+        buildHeap(nums);
         //2、然后进行堆排序 siftDown/siftUp (交换并拿出最后一个节点)
-        for (int i = arr.length - 1; i >= 0; i--) {
-            swap(arr, i, 0);
-            heapify(arr, i, 0);
+        for (int i = nums.length - 1; i >= 0; i--) {
+            swap(nums, i, 0);
+            heapify(nums, i, 0);
         }
         //3、打印
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+        for (int i = 0; i < nums.length; i++) {
+            System.out.println(nums[i]);
         }
     }
 
-    public static void buildHeap(int[] arr) {
-        int heapSize = arr.length;
+    public static void buildHeap(int[] nums) {
+        int heapSize = nums.length;
         int lastNotLeafIdx = (heapSize - 1) / 2;
         for (int i = lastNotLeafIdx; i >= 0; i--) {
-            heapify(arr, heapSize, i);
+            heapify(nums, heapSize, i);
         }
     }
 
@@ -66,10 +66,10 @@ public class HeapSort {
         }
     }
 
-    private static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
 }
