@@ -2,31 +2,31 @@ package com.myooo.linkedList;
 
 public class SingleLinkedList {
 
-    private static Node head = new Node(0);
+    private static ListNode head = new ListNode(0);
 
     //增加节点
     public static void add(int value) {
-        Node newNode = new Node(value);
+        ListNode newListNode = new ListNode(value);
 
-        Node temp = head;
+        ListNode temp = head;
         while (temp.next != null) {
             temp = temp.next;
         }
-        temp.next = newNode;
+        temp.next = newListNode;
     }
     //显示链表
-    public static void printlist(Node head) {
+    public static void printlist(ListNode head) {
         if (head == null) {
             System.out.println("空链表");
         }
-        Node temp = head;
+        ListNode temp = head;
         while (temp.next != null) {
             System.out.println("节点数值" + temp.value);
             temp = temp.next;
         }
     }
 
-    public static Node getHead() {
+    public static ListNode getHead() {
         return head;
     }
 }
