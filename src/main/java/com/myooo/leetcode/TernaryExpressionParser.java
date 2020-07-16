@@ -2,7 +2,7 @@ package com.myooo.leetcode;
 
 import java.util.Stack;
 
-public class TernaryExpressionParer {
+public class TernaryExpressionParser {
     /**
 
     [LeetCode] Ternary Expression Parser 三元表达式解析器
