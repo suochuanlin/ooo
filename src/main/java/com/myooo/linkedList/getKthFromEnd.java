@@ -31,6 +31,7 @@ public class getKthFromEnd {
     }
 
     //单链表的反转 https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/
+//    https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/solution/ru-guo-ni-kan-wan-ping-lun-he-ti-jie-huan-you-wen-/
     //递归
     public static ListNode reverseList(ListNode head) {
         /**
@@ -59,6 +60,24 @@ public class getKthFromEnd {
             head = temp;               //4、循环调整下个节点
         }
         return newHead;
+    }
+
+    //迭代 这个更好理解
+    public ListNode reverseListNotRec02(ListNode head) {
+        //申请节点，pre和 cur，pre指向null
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode tmp = null;
+        while(cur!=null) {
+            //记录当前节点的下一个节点
+            tmp = cur.next;
+            //然后将当前节点指向pre
+            cur.next = pre;
+            //pre和cur节点都前进一位
+            pre = cur;
+            cur = tmp;
+        }
+        return pre;
     }
 
 
