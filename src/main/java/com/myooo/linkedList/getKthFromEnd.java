@@ -1,5 +1,11 @@
 package com.myooo.linkedList;
 
+import com.sun.java.accessibility.util.EventID;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
+
 /**
  * leetcode 查找单链表中的倒数第k个节点
  */
@@ -14,7 +20,11 @@ public class getKthFromEnd {
 //        ListNode head = SingleLinkedList.getHead();
         System.out.println("------分割线------");
 //        SingleLinkedList.printlist(getKthFromEnd(head,3));
-        SingleLinkedList.printlist(reveListNodeMyself(SingleLinkedList.getHead()));
+//        SingleLinkedList.printlist(reveListNodeMyself(SingleLinkedList.getHead()));
+//        System.out.println(Arrays.toString(reversePrint(SingleLinkedList.getHead())));
+        reversePrintRec(SingleLinkedList.getHead());
+        System.out.println(String.valueOf(list));
+
     }
 
     //双指针
@@ -97,5 +107,32 @@ public class getKthFromEnd {
     }
 
 
+    //反向打印链表 迭代
+    public static int[] reversePrint(ListNode head) {
+        Stack<Integer> s = new Stack<>();
+        int c = 1;
+        s.push(head.value);
+        ListNode tem = head;
+        while (tem.next != null) {
+            s.push(tem.next.value);
+            c++;
+            tem = tem.next;
+        }
+        int[] result = new int[c];
+        for (int i = 0; i < c; i++) {
+            result[i] = s.pop();
+        }
+        return result;
+    }
+
+    //递归
+    public static ArrayList<Integer> list = new ArrayList();
+    public static void reversePrintRec(ListNode head) {
+        if (head.next == null) {
+            return;
+        }
+        reversePrintRec(head.next);
+        list.add(head.value);
+    }
 
 }
