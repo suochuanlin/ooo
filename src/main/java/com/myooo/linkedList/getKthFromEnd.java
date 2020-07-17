@@ -14,7 +14,7 @@ public class getKthFromEnd {
 //        ListNode head = SingleLinkedList.getHead();
         System.out.println("------分割线------");
 //        SingleLinkedList.printlist(getKthFromEnd(head,3));
-        SingleLinkedList.printlist(reverseList(SingleLinkedList.getHead()));
+        SingleLinkedList.printlist(reveListNodeMyself(SingleLinkedList.getHead()));
     }
 
     //双指针
@@ -78,6 +78,22 @@ public class getKthFromEnd {
             cur = tmp;
         }
         return pre;
+    }
+
+    public static ListNode reveListNodeMyself(ListNode head) {
+
+        ListNode temp = null;
+        ListNode cur = head;
+        ListNode pre = null; //pre 始终为最头上节点
+        while (cur != null) {
+            temp = cur.next;
+            cur.next = pre;
+
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+
     }
 
 
