@@ -1,9 +1,6 @@
 package com.myooo.linkedList;
 
-import com.sun.java.accessibility.util.EventID;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -111,10 +108,10 @@ public class getKthFromEnd {
     public static int[] reversePrint(ListNode head) {
         Stack<Integer> s = new Stack<>();
         int c = 1;
-        s.push(head.value);
+        s.push(head.val);
         ListNode tem = head;
         while (tem.next != null) {
-            s.push(tem.next.value);
+            s.push(tem.next.val);
             c++;
             tem = tem.next;
         }
@@ -132,7 +129,7 @@ public class getKthFromEnd {
             return;
         }
         reversePrintRec(head.next);
-        list.add(head.value);
+        list.add(head.val);
     }
 
 }

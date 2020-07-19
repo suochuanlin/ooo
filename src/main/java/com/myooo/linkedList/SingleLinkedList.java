@@ -21,7 +21,7 @@ public class SingleLinkedList {
         }
         ListNode temp = head;
         while (temp.next != null) {
-            System.out.println("节点数值" + temp.value);
+            System.out.println("节点数值" + temp.val);
             temp = temp.next;
         }
     }
