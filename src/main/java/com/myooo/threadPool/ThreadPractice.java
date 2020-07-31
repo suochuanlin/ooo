@@ -3,6 +3,11 @@ package com.myooo.threadPool;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * https://www.cnblogs.com/gemine/p/9039012.html
+ * https://leetcode-cn.com/problems/print-foobar-alternately/
+ *
+ */
 public class ThreadPractice {
 
     private ReentrantLock lock = new ReentrantLock();
