@@ -60,7 +60,7 @@ public class ThreadPractice {
 
 
     public static void main(String[] args) throws InterruptedException {
-        ThreadPractice practice = new ThreadPractice(10);
+        ThreadPractice practice = new ThreadPractice(2);
         Thread thread1 = new Thread(()-> {
             try {
                 practice.foomyself(new Print_Foo());
@@ -89,14 +89,15 @@ public class ThreadPractice {
 
         for (int i = 0; i < n; i++) {
             lock.lock();
-            System.out.println(Thread.currentThread().getName() + "拿到了锁 信号");
+            System.out.println(Thread.currentThread().getName() + "【foomyself】 拿到了锁");
             if (c != 1) {
-                System.out.println(Thread.currentThread().getName() + "等待信号");
-                fooCondition.await();
+                fooCondition.await(); //释放锁在此等待
             }
             // printFoo.run() outputs "foo". Do not change or remove this line.
             printFoo.run();
             barCondition.signal();
+            System.out.println(Thread.currentThread().getName() + " 【foomyself】 发出了信号");
+
             c = 2;
             lock.unlock();
         }
@@ -105,12 +106,16 @@ public class ThreadPractice {
 
         for (int i = 0; i < n; i++) {
             lock.lock();
+            System.out.println(Thread.currentThread().getName() + "【barmyself】 拿到了锁");
+
             if (c != 2) {
                 barCondition.await();
             }
             // printFoo.run() outputs "foo". Do not change or remove this line.
             printBar.run();
             fooCondition.signal();
+            System.out.println(Thread.currentThread().getName() + "【barmyself】 发出了信号");
+
             c = 1;
             lock.unlock();
         }
