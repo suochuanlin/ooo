@@ -40,7 +40,7 @@ public class QuickSort {
                 arr[right] = p;
             }
         }
-        //pivot和指针重合点交换
+        //pivot和指针重合点交换，起始位置与basic数字交换就好了
         int p = arr[left];
         arr[left] = pivot;
         arr[startIndex] = p;
@@ -49,7 +49,7 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = new int[]{4, 7, 6, 5, 3, 2, 8, 1};
-//        quickSort(arr, 0, arr.length - 1);
+        quickSort(arr, 0, arr.length - 1);
         quickSortMyown(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
     }

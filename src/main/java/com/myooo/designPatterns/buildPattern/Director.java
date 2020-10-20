@@ -3,7 +3,7 @@ package com.myooo.designPatterns.buildPattern;
 public class Director {
 
 
-    public void contract() {
+    public void builder() {
         Builder builder = new ConcreteBuilder();
         builder.buildBoard();
         builder.buildCPU();
@@ -14,7 +14,7 @@ public class Director {
 
     public static void main(String[] args) {
         Director director = new Director();
-        director.contract();
+        director.builder();
     }
 
 }
