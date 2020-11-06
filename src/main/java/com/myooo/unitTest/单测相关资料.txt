@@ -1,0 +1,9 @@
+基于mockito 和 h2的单元测试
+1、controller相关
+gitcase 资料
+https://github.com/Damiox/ecommerce-rest-spring-jpa/blob/master/src/test/java/com/github/damiox/ecommerce/api/controller/CategoryProductsControllerTest.java
+
+2、dao层 h2相关
+https://github.com/chujianyun/springboot-h2-test-demo/tree/master/src/test
+3、mockito 使用文档（比较老的中文文档，有官方地址）
+https://github.com/hehonghui/mockito-doc-zh
