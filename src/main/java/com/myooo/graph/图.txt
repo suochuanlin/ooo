@@ -31,11 +31,11 @@
      临时存储结构 队列
 
 
-
+git-->场景1
 切换 dev
 增加第二个commit
 
-
-
-
 冲突
+git-->场景2
+从master新建新分支A,B，then master先merge B, 然后A rebase master,最后 merge到master
+

@@ -19,6 +19,9 @@ public class ListGraph {
         }
     }
 
+
+
+
     public void addEdge(int start,int end) {
         graphs.get(start).add(end);
     }
