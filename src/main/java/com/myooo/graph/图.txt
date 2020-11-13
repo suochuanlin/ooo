@@ -39,3 +39,4 @@ git-->场景1
 git-->场景2
 从master新建新分支A,B，then master先merge B, 然后A rebase master,最后 merge到master
 
+c-branch commit
