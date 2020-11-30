@@ -1,7 +1,13 @@
-# 测试
+##  分布式锁
 
-http://cwiki.guazi.com/pages/viewpage.action?pageId=228858931
-分布式锁md
+~~~~
+1、实现分布式锁的方式
+2、为何选用Redisson,Redisson与Jdies对比优劣势
+3、分布式锁使用中问题及 原理，Redlock 、lua脚本等
+~~~~
 
-测试
+#### 1、实现分布式锁的方式
 
+~~~~
+1
+~~~~
