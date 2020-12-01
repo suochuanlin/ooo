@@ -14,8 +14,8 @@ redlock: Redis Distributed Lock
 https://www.cnblogs.com/rgcLOVEyaya/p/RGC_LOVE_YAYA_1003days.html
 ~~~~
 
-![Image text]imagefolder/WechatIMG279.jpeg
+![Image text](imagefolder/WechatIMG279.jpeg)
 
-![Image text]src/main/resources/imagefolder/WechatIMG279.jpeg
+![Image text](src/main/resources/imagefolder/WechatIMG279.jpeg)
 
-![Image text]https://github.com/suochuanlin/ooo/blob/master/src/main/resources/imagefolder/WechatIMG279.jpeg
+![Image text](https://github.com/suochuanlin/ooo/blob/master/src/main/resources/imagefolder/WechatIMG279.jpeg)
