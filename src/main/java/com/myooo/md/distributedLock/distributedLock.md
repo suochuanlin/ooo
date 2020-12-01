@@ -9,5 +9,11 @@
 #### 1、实现分布式锁的方式
 
 ~~~~
-1
+redlock: Redis Distributed Lock
+相关资料
+https://www.cnblogs.com/rgcLOVEyaya/p/RGC_LOVE_YAYA_1003days.html
 ~~~~
+
+![Image text]imagefolder/WechatIMG279.jpeg
+
+![Image text]src/main/resources/imagefolder/WechatIMG279.jpeg
