@@ -1,6 +1,6 @@
 package com.myooo.designPatterns.commandPattern;
 
-public interface Command {
+public interface ICommand {
 
     void execute();
 

@@ -1,2 +1,17 @@
-package com.myooo.designPatterns.commandPattern;public class SimpleRemoteControl {
+package com.myooo.designPatterns.commandPattern;
+
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class SimpleRemoteControl {
+
+    ICommand slot;
+
+    public void setCommand(ICommand command) {
+        this.slot = command;
+    }
+
+    public void buttonWasPressed() {
+        slot.execute();
+    }
 }
