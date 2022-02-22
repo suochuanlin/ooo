@@ -8,18 +8,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 方法: 广度优先搜索遍历 BFS
      思想:假设初始状态图中所有顶点未被访问，从图中某顶点v出发，访问它的所有邻接点w1,w2,...,wd，然后再依次访问w1,w2,...,wd的邻接点，直到所有与v有相通路径的所有顶点都被访问完为止。
      过程:
@@ -30,13 +18,3 @@
      feature:广度优先搜索遍历结果不唯一
      临时存储结构 队列
 
-
-git-->场景1
-切换 dev
-增加第二个commit
-
-冲突
-git-->场景2
-从master新建新分支A,B，then master先merge B, 然后A rebase master,最后 merge到master
-
-c-branch commit

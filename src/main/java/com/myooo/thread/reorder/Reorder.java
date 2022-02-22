@@ -13,20 +13,14 @@ public class Reorder {
 
 
     public static void main(String[] args) throws InterruptedException {
-        Thread one = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                a = 1;
-                x = b;
-            }
+        Thread one = new Thread(() -> {
+            a = 1;
+            x = b;
         });
 
-        Thread other = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                b = 1;
-                y = a;
-            }
+        Thread other = new Thread(() -> {
+            b = 1;
+            y = a;
         });
 
         one.start();
