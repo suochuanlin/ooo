@@ -33,3 +33,7 @@ build/
 .mvn
 mvnw*
 
+####gc###
+*.hprof
+*.log
+

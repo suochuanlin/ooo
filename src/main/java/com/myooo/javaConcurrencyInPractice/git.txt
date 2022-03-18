@@ -1,2 +1,0 @@
-资料练习
-https://github.com/edwardlee03/Java_Concurrency_In_Practice
