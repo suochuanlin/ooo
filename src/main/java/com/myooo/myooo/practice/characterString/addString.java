@@ -15,7 +15,7 @@ public class addString {
 //            i++;
 //            System.out.println(n1);
 //        }
-        System.out.println(addTwoString("9", "99"));
+        System.out.println(addStrings("999", "99"));
     }
 
     public static String addTwoString(String text1, String text2) {
@@ -41,7 +41,7 @@ public class addString {
 
     }
 
-    public String addStrings(String num1, String num2) {
+    public static String addStrings(String num1, String num2) {
         StringBuilder res = new StringBuilder("");
         int i = num1.length() - 1, j = num2.length() - 1, carry = 0;
         while (i >= 0 || j >= 0) {

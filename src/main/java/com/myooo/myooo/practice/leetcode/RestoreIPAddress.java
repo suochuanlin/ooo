@@ -138,7 +138,7 @@ public class RestoreIPAddress {
         // 如果找到了 4 段 IP 地址并且遍历完了字符串，那么就是一种答案
         if (segId == SEG_COUNT) {
             if (segStart == s.length()) {
-                StringBuffer ipAddr = new StringBuffer();
+                StringBuilder ipAddr = new StringBuilder();
                 for (int i = 0; i < SEG_COUNT; ++i) {
                     ipAddr.append(segments[i]);
                     if (i != SEG_COUNT - 1) {
@@ -163,7 +163,7 @@ public class RestoreIPAddress {
 
         // 一般情况，枚举每一种可能性并递归
         int addr = 0;
-        for (int segEnd = segStart; segEnd < s.length(); ++segEnd) {
+        for (int segEnd = segStart; segEnd < s.length(); segEnd++) {
             addr = addr * 10 + (s.charAt(segEnd) - '0');
             if (addr > 0 && addr <= 255) {
                 segments[segId] = addr;

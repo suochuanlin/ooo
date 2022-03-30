@@ -123,7 +123,7 @@ public class getKthFromEnd {
     }
 
     //递归
-    public static ArrayList<Integer> list = new ArrayList();
+    public static ArrayList<Integer> list = new ArrayList<>();
     public static void reversePrintRec(ListNode head) {
         if (head.next == null) {
             return;
