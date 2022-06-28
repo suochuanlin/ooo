@@ -10,7 +10,7 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] array = new int[]{0,1,2,3,4,5,6,7,8,9};
-        int key = 5;
+        int key = 1;
         rank(key, array);
     }
     public static void rank(int key, int[] array) {
@@ -24,14 +24,17 @@ public class BinarySearch {
             return -1;
         }
         //2、递归调用总是去尝试解决一个规模更小的子问题，这样递归才能收敛到最简单的情况。在下面代码中，入参数坐标一直在缩小。
-        int mid = (startIdx + endIdx) / 2;
+        int mid = startIdx + (endIdx - startIdx) / 2;
         //3、递归调用的父问题和尝试解决的子问题之间不应该有交集。在下面的代码中，两个子问题操作的数组部分时不同的。
         if (key > arr[mid]) {
-            return rank(key, mid, endIdx, arr);
+            return rank(key, mid + 1, endIdx, arr);
         } else if (key < arr[mid]) {
-            return rank(key, startIdx, mid, arr);
-        } else {
-            return mid;
+            return rank(key, startIdx, mid - 1, arr);
         }
+        return mid;
+    }
+
+    public void exR1() {
+
     }
 }
