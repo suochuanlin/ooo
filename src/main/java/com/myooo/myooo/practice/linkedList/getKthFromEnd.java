@@ -20,7 +20,7 @@ public class getKthFromEnd {
 //        SingleLinkedList.printlist(reveListNodeMyself(SingleLinkedList.getHead()));
 //        System.out.println(Arrays.toString(reversePrint(SingleLinkedList.getHead())));
         reversePrintRec(SingleLinkedList.getHead());
-        System.out.println(String.valueOf(list));
+        System.out.println(list);
 
     }
 
