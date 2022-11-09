@@ -1,15 +1,19 @@
 package com.myooo.myooo.practice.lru;
 
 
-public class Node<K, V> {
-    Object key;
-    Object value;
+public class Node {
+    int key;
+    int value;
 
     Node pre;
     Node next;
 
-    public Node(K k, V v) {
+
+    public Node(int k, int v) {
         this.key = k;
         this.value = v;
+    }
+
+    public Node() {
     }
 }
