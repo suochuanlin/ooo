@@ -74,7 +74,7 @@ public class getKthFromEnd {
         //申请节点，pre和 cur，pre指向null
         ListNode pre = null;
         ListNode cur = head;
-        ListNode tmp = null;
+        ListNode tmp;
         while(cur!=null) {
             //记录当前节点的下一个节点
             tmp = cur.next;
