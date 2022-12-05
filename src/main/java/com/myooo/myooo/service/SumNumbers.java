@@ -21,7 +21,7 @@ public class SumNumbers {
 
         //计算方式1
         long start = System.currentTimeMillis();
-        Integer r2 = nums.parallelStream().reduce(Integer::sum).get();
+        Integer r2 = nums.stream().reduce(Integer::sum).get();
         long consumeTime1 = System.currentTimeMillis() - start;
 
         System.out.println("算法1 result = " + r2 + "，耗时 " + consumeTime1);
